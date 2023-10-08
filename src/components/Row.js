@@ -33,7 +33,15 @@ const Row = ({ title, id, fetchUrl }) => {
                     ))}
                 </div>
                 <div className="slider_arrow-right">
-                    <span className="arrow">{">"}</span>
+                    <span
+                        className="arrow"
+                        onClick={() => {
+                            document.getElementById(id).scrollLeft +=
+                                window.innerWidth - 80;
+                        }}
+                    >
+                        {">"}
+                    </span>
                 </div>
             </div>
         </div>
