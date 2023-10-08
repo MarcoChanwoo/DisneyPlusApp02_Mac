@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+// 스크롤 시 NavBar 색깔 변경 -> NavWrapper에서 show={show}를 설정해야 최종 적용됨
 const Nav = () => {
     const [show, setShow] = useState(false);
     useEffect(() => {
@@ -17,7 +18,7 @@ const Nav = () => {
     }, []);
 
     return (
-        <NavWrapper>
+        <NavWrapper show={show}>
             <Logo>
                 <img
                     alt="Disney Plus Logo"
