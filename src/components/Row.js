@@ -20,7 +20,15 @@ const Row = ({ title, id, fetchUrl }) => {
             <h2>{title}</h2>
             <div className="slider">
                 <div className="slider_arrow-left">
-                    <span className="arrow">{"<"}</span>
+                    <span
+                        className="arrow"
+                        onClick={() => {
+                            document.getElementById(id).scrollLeft -=
+                                window.innerWidth - 80;
+                        }}
+                    >
+                        {"<"}
+                    </span>
                 </div>
                 <div id={id} className="row_posters">
                     {movies.map((movie) => (
