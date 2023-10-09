@@ -61,7 +61,46 @@
     margin: 16px 0;
 }
 
+.modal_details {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.modal_overview {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
 .modal::-webkit-scrollbar {
     display: none;
     visibility: hidden;
+}
+
+@media screen and (max-height: 768px){
+    .wrapper-modal {
+        align-items: unset;
+        padding-top: 2rem;
+    }
+
+    .modal {
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .modal_overview {
+        font-size: 16px;
+    }
+
+    .modal_details {
+        font-size: 16px;
+    }
+
+    .wrapper-modal {
+        padding: 0;
+    }
+
+    .modal {
+        overflow-y: scroll !important;
+    }
 }
