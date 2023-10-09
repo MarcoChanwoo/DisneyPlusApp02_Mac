@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 // 스크롤 시 NavBar 색깔 변경 -> NavWrapper에서 show={show}를 설정해야 최종 적용됨
 const Nav = () => {
     const [show, setShow] = useState(false);
     const { pathname } = useLocation();
+    const [searchValue, setSearchValue] = useState("");
+    const navigate = useNavigate();
+
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => {
@@ -13,12 +16,20 @@ const Nav = () => {
         };
     }, []);
 
+    // console.log("useLocation.search", useLocation().search);
+
     const handleScroll = () => {
         if (window.scrollY > 50) {
             setShow(true);
         } else {
             setShow(false);
         }
+    };
+
+    const handleChange = (e) => {
+        setSearchValue(e.target.value);
+        // console.log("e.target.value", e.target.value);
+        navigate(`/search?q=${e.target.value}`);
     };
 
     return (
@@ -35,6 +46,8 @@ const Nav = () => {
                 <Login>Login</Login>
             ) : (
                 <Input
+                    value={searchValue}
+                    onChange={handleChange}
                     className="nav_input"
                     type="text"
                     placeholder="검색해주세요."
