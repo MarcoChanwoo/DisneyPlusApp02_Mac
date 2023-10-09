@@ -2,6 +2,17 @@ import axios from "../api/axios";
 import React, { useCallback, useEffect, useState } from "react";
 import "./Row.css";
 import MovieModal from "./MovieModal";
+import styled from "styled-components";
+
+// import { Navigation, Pagination, Scrollbar, A11y } from "swiper"; <- 뒤에 /modules를 작성해야 함(아래 참고)
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+//import swiper style
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/scrollbar";
+import "swiper/css/pagination";
 
 const Row = ({ title, id, fetchUrl }) => {
     const [movies, setMovies] = useState([]);
@@ -24,48 +35,44 @@ const Row = ({ title, id, fetchUrl }) => {
     };
 
     return (
-        <div>
+        <Container>
             <h2>{title}</h2>
-            <div className="slider">
-                <div className="slider_arrow-left">
-                    <span
-                        className="arrow"
-                        onClick={() => {
-                            document.getElementById(id).scrollLeft -=
-                                window.innerWidth - 80;
-                        }}
-                    >
-                        {"<"}
-                    </span>
-                </div>
-                <div id={id} className="row_posters">
+            <Swiper
+                // install Swiper modules
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                loop={true}
+                navigation // arrow 버튼 사용 여부
+                pagination={{ clickable: true }}
+            >
+                <Content id={id}>
                     {movies.map((movie) => (
-                        <img
-                            key={movie.id}
-                            className="row_poster"
-                            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                            alt={movie.name}
-                            onClick={() => handleClick(movie)}
-                        />
+                        <SwiperSlide>
+                            <Wrap>
+                                <img
+                                    key={movie.id}
+                                    className="row_poster"
+                                    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                                    alt={movie.name}
+                                    onClick={() => handleClick(movie)}
+                                />
+                            </Wrap>
+                        </SwiperSlide>
                     ))}
-                </div>
-                <div className="slider_arrow-right">
-                    <span
-                        className="arrow"
-                        onClick={() => {
-                            document.getElementById(id).scrollLeft +=
-                                window.innerWidth - 80;
-                        }}
-                    >
-                        {">"}
-                    </span>
-                </div>
-            </div>
+                </Content>
+            </Swiper>
             {modalOpen && (
                 <MovieModal {...movieSelected} setModalOpen={setModalOpen} />
             )}
-        </div>
+        </Container>
     );
 };
 
 export default Row;
+
+const Container = styled.div`
+    padding: 0 0 26px;
+`;
+
+const Content = styled.div``;
+
+const Wrap = styled.div``;
