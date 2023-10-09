@@ -21,9 +21,13 @@ const SearchPage = () => {
     const fetchSearchMovie = async (searchTerm) => {
         try {
             const response = await axios.get(
-                `search/multi?include_adult=false$query=${searchTerm}`
+                `/search/multi?include_adult=false$query=${searchTerm}`
             );
-        } catch (error) {}
+            setSearchResults(response.data.result);
+            // console.log("response", response);
+        } catch (error) {
+            console.log(error); // 에러 발생 시 내용을 콘솔에 표시
+        }
     };
 
     return <div>SearchPage</div>;
