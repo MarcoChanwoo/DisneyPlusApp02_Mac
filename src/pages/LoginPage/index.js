@@ -21,13 +21,42 @@ const LoginPage = () => {
 
 export default LoginPage;
 
-const Container = styled.section``;
+const Container = styled.section`
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+`;
 
-const Content = styled.div``;
+const Content = styled.div`
+    margin-bottom: 10vw;
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px 40px;
+    height: 100%;
+`;
 
-const Center = styled.div``;
+const Center = styled.div`
+    max-width: 650px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`;
 
-const LogoOne = styled.img``;
+const LogoOne = styled.img`
+    margin-bottom: 12px;
+    max-width: 600px;
+    min-height: 1px;
+    display: block;
+    width: 100%;
+`;
 
 const SignUpLink = styled.a``;
 
