@@ -4,8 +4,8 @@ import "./Row.css";
 import MovieModal from "./MovieModal";
 import styled from "styled-components";
 
-// import { Navigation, Pagination, Scrollbar, A11y } from "swiper"; <- 뒤에 /modules를 작성해야 함(아래 참고)
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+// import { Navigation, Pagination, Scrollbar, A11y } from "swiper"; <- 뒤에 /modules를 작성해야 함(아래 참고) ?? 또 아닌듯?
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 //import swiper style
