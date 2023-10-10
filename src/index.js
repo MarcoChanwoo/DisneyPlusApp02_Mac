@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import app from "./firebase";
+import app from "./firebase"; // 이렇게 가져오기만 해도 firebase와 연결이 완료된 것임
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
