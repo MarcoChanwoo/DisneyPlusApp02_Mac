@@ -17,6 +17,8 @@ const Nav = () => {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
 
+    const [userData, setUserData] = useState({});
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -55,7 +57,10 @@ const Nav = () => {
     //로그인을 위한 함수
     const handleAuth = () => {
         signInWithPopup(auth, provider)
-            .then((result) => {})
+            .then((result) => {
+                setUserData(result.user);
+                // console.log("result", result);
+            })
             .catch((error) => {
                 console.log(error);
             });
@@ -82,7 +87,10 @@ const Nav = () => {
                         placeholder="검색해주세요."
                     />
                     <SignOut>
-                        <UserImg />
+                        <UserImg
+                            src={userData.photoURL}
+                            alt={userData.displayName}
+                        />
                         <DropDown>
                             <span>Sign Out</span>
                         </DropDown>
