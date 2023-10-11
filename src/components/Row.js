@@ -69,7 +69,7 @@ const Row = ({ title, id, fetchUrl }) => {
                                 <img
                                     key={movie.id}
                                     // className="row_poster"
-                                    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                                    src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                                     alt={movie.name}
                                     onClick={() => handleClick(movie)}
                                 />
