@@ -11,13 +11,17 @@ import styled from "styled-components";
 
 // 스크롤 시 NavBar 색깔 변경 -> NavWrapper에서 show={show}를 설정해야 최종 적용됨
 const Nav = () => {
+    const initialUserData = localStorage.getItem("userData")
+        ? JSON.parse(localStorage.getItem("userData"))
+        : {};
+
     const [show, setShow] = useState(false);
     const { pathname } = useLocation();
     const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState(initialUserData);
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
