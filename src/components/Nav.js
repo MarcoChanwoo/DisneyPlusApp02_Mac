@@ -17,7 +17,6 @@ const Nav = () => {
     const navigate = useNavigate();
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
-
     const [userData, setUserData] = useState({});
 
     useEffect(() => {
@@ -30,7 +29,7 @@ const Nav = () => {
                 navigate("/");
             }
         });
-    }, []);
+    }, [auth, navigate, pathname]);
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
@@ -61,6 +60,7 @@ const Nav = () => {
             .then((result) => {
                 setUserData(result.user);
                 // console.log("result", result);
+                localStorage.setItem("userData", JSON.stringify(result.user));
             })
             .catch((error) => {
                 console.log(error);
